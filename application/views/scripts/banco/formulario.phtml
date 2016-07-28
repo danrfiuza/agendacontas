@@ -1,0 +1,15 @@
+
+ <div class="page-header"><h1 align="center">Formulário Banco<h1></div>
+ <div class="col-md-offset-2 col-md-8">
+    <form action="<?php echo $this->baseUrl("banco/gravar");?>" method="post">
+         <input type="hidden" value="<?php echo $this->row['BANCO_IN_ID']?>" name="BANCO_IN_ID" /> 
+     <div class="form-group">
+         <label>Banco:</label><input class="form-control" type="text" name="BANCO_ST_DESCRICAO" value="<?php echo $this->row['BANCO_ST_DESCRICAO'];?>" />
+     </div>
+     <div align="right">   
+         <button class="btn btn-success" type="submit">Salvar<span class="glyphicon glyphicon-save"></span></button>
+         <a class="btn btn-warning" href="<?php echo $this->baseUrl("banco/index");?>">Voltar<span class="glyphicon glyphicon-arrow-left"></span></a>
+         
+     </div>
+    </form>
+</div>

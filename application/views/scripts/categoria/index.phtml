@@ -1,0 +1,36 @@
+  <div class="page-header"><h1 align="center">Listagem de Bancos<h1></div>
+        <div class="col-lg-4">
+         <a class="btn btn-warning" href="<?php echo $this->baseUrl("Banco/formulario")?>">
+            Cadastrar Banco
+            <span class="glyphicon glyphicon-plus"></span>
+         </a>
+        </div> 
+        <br />    
+        <br />           
+               
+            <table class="table table-bordered table-hover">
+            
+            <tr class="text-center success">
+             <td><b>Ações</b></td>
+                <td><b>ID</b></td>
+                <td><b>Nome</b></td>
+                
+                </tr>
+        <?php if(sizeof($this->paginator)): ?>
+            <?php foreach($this->paginator as $banco){ ?>
+            <tr>
+                <td class="text-center">
+                    <a class="btn btn-primary" title="Editar" href="<?php echo $this->baseUrl("banco/formulario/BANCO_IN_ID/").$this->escape($banco->BANCO_IN_ID)?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-danger" title="Excluir" href="<?php echo $this->baseUrl("banco/excluir/BANCO_IN_ID/").$this->escape($banco->BANCO_IN_ID)?>"><span class="glyphicon glyphicon-remove"></span></a>                </td>
+                <td class="text-center"><?php echo $this->escape($banco->BANCO_IN_ID); ?></td>
+                <td class="text-center"><?php echo $this->escape($banco->BANCO_ST_DESCRICAO); ?></td>
+                
+            </tr>    
+                <?php } ?>
+            
+            </table>
+        <?php else: ?>
+            <li>Nenhum Banco encontrado.</li>
+        <?php endif; ?>
+        </ul>
+        <?php echo $this->paginator; ?>

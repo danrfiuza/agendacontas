@@ -1,0 +1,43 @@
+<div class="col-md-12">
+  <div class="page-header"><h2 align="center">Listagem de Agências<h2></div>
+        <div class="col-lg-4">
+         <a class="btn btn-warning" href="<?php echo $this->baseUrl("agencia/formulario")?>">
+            Cadastrar Agência
+            <span class="glyphicon glyphicon-plus"></span>
+         </a>
+        </div> 
+        <br />    
+        <br />           
+               
+            <table class="table table-bordered table-hover">
+            
+            <tr class="text-center success">
+             <td>Ações</td>
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Banco</td>
+                
+                </tr>
+        <?php if(sizeof($this->paginator)): ?>
+            <?php foreach($this->paginator as $agencia){ ?>
+            <tr>
+                <td class="text-center">
+                    <a class="btn btn-primary" title="Editar" href="<?php echo $this->baseUrl("agencia/formulario/AGE_IN_ID/").$this->escape($agencia->AGE_IN_ID)?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-danger" title="Excluir" href="<?php echo $this->baseUrl("agencia/excluir/AGE_IN_ID/").$this->escape($agencia->AGE_IN_ID)?>"><span class="glyphicon glyphicon-remove"></span></a> 
+                </td>
+                <td class="text-center"><?php echo $this->escape($agencia->AGE_IN_ID); ?></td>
+                <td class="text-center"><?php echo $this->escape($agencia->AGE_ST_DESCRICAO); ?></td>
+                <td class="text-center"><?php echo $this->escape($agencia->BANCO_ST_DESCRICAO); ?></td>
+                
+                
+            </tr>    
+                <?php } ?>
+            
+            </table>
+        <?php else: ?>
+            <li>Nenhuma Agencia encontrada.</li>
+        <?php endif; ?>
+        </ul>
+        <?php echo $this->paginator; ?>
+
+</div>

@@ -1,0 +1,60 @@
+<div class="panel panel-default">
+   <div class="panel panel-heading"><h1 class="page-header">Cadastro de Contas</h1></div>
+   <form role="form" action="<?php echo $this->baseUrl("conta/gravar")?>" method="POST">
+   <div class="panel-body">
+     <input  type="hidden" name="CON_IN_ID" value="<?php echo $this->row['CON_IN_ID']?>"/>
+      <div class="form-group">
+         <label>Tipo de Conta:</label>
+          <select id="tipo-conta" name="TIPO_CONTA_IN_ID" class="form-control">
+             <?php foreach ($this->tipo_conta as $tipoConta):?>
+                <option value="<?php echo $tipoConta['TIPO_CONTA_IN_ID']?>" <?php echo $tipoConta['TIPO_CONTA_IN_ID'] == $this->row['TIPO_CONTA_IN_ID']?"selected":""?>?><?php echo $tipoConta['TIPO_CONTA_ST_DESCRICAO']?></option>
+             <?php endforeach;?>
+          </select>
+      </div>
+      
+      <div class="form-group">
+         <label for="CON_ST_DESCRICAO">Descrição:</label>
+         <input type="text" class="form-control" name="CON_ST_DESCRICAO" value="<?php echo $this->row['CON_ST_DESCRICAO']?>"/>
+      </div>
+      <div class="form-group">
+         <label for="CON_DBL_SALDO">Saldo inicial:</label>
+         <input type="text" class="form-control" name="CON_DBL_SALDO" value="<?php echo $this->row['CON_DBL_SALDO']?>"/>
+      </div>
+
+       <div class="form-group">
+         <label>Banco:</label>
+          <select id="banco" name="BANCO_IN_ID" class="form-control">
+                <option value="">nenhum</option>
+             <?php foreach ($this->banco as $banco):?>
+                <option value="<?php echo $banco['BANCO_IN_ID']?>" <?php echo $banco['BANCO_IN_ID'] == $this->row['BANCO_IN_ID']?"selected":""?>><?php echo $banco['BANCO_ST_DESCRICAO']?></option>
+             <?php endforeach;?>
+          </select>
+      </div>
+
+     <div id="div-agencia">
+      <div class="form-group">
+         <label>Agência:</label>
+          <select id="agencia" name="AGE_IN_ID" class="form-control">
+             <?php foreach ($this->agencia as $agencia):?>
+                <option value="<?php echo $agencia['AGE_IN_ID']?>" <?php echo $agencia['AGE_IN_ID'] == $this->row['AGE_IN_ID']?"selected":""?>?><?php echo $agencia['AGE_ST_DESCRICAO']?></option>
+             <?php endforeach;?>
+          </select>
+      </div>
+   </div>
+   
+   <div class="panel-footer">
+       <div class="form-group">
+         <button class="btn btn-success" type="submit">Salvar <span class="glyphicon glyphicon-save"></span></button>
+         <a class="btn btn-primary" href="<?php echo $this->baseUrl("conta/index")?>">Voltar &nbsp;<span class="glyphicon glyphicon-arrow-left"></a>
+       </div>
+   </div>
+   </form>
+</div>
+
+<script>
+   $(function(){
+       $("#banco").click(function(){
+           $("#div-agencia").load("<?php echo $this->baseUrl("agencia/carregar-agencia/BANCO_IN_ID/");?>"+$("#banco").val());
+        });
+   });
+</script>

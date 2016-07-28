@@ -1,0 +1,19 @@
+<div class="page-header"><h1 class="text-center">Parcelamento</h1></div>
+<div class="col-md-12">
+   <table class="table table-striped table-bordered responsive">
+      <tr class="success">
+        <td class="text-center"><b>Parcela</b></td>
+        <td class="text-center"><b>Data de Vencimento</b></td>
+        <td class="text-center"><b>Valor</b></td>
+      </tr>
+      <?php if(!empty($this->aParcela)):?>
+      <?php foreach ($this->aParcela as $parcela):?>
+         <tr>
+          <td><input type="text" class="form-control" name="PAR_IN_PARCELA[]" value="<?php echo $parcela['PAR_IN_PARCELA']?>" /></td>
+          <td><input type="text" class="form-control" name="PAR_DT_VENCIMENTO[]" value="<?php echo $parcela['PAR_DT_VENCIMENTO']?>"></td>
+          <td><input type="text" class="form-control" name="PAR_DBL_PARCELA[]" value="<?php echo $parcela['PAR_DBL_PARCELA']?>" /></td>
+         </tr>
+      <?php endforeach;?>
+      <?php endif;?>
+   </table>
+</div>

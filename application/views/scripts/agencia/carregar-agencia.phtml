@@ -1,0 +1,7 @@
+<div class="form-group">
+    <select name="AGE_IN_ID" class="form-control">
+            <?php foreach ($this->agencia as $agencia):?>
+             <option  value="<?php echo $agencia['AGE_IN_ID'];?>" <?php echo $this->row['AGE_IN_ID']?"selected":"";?> > <?php echo $agencia['AGE_ST_DESCRICAO']?></option>
+            <?php endforeach;?>
+    </select>
+</div>

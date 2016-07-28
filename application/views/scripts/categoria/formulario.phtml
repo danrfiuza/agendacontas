@@ -1,0 +1,33 @@
+<div class="page-header"><h1 align="center">Formulário De Categorias<h1></div>
+ <div class="panel panel-default">
+    <div class="panel-body">
+       <div class="col-md-offset-2 col-md-8">
+          <div class="row">
+                <form action="<?php echo $this->baseUrl("categoria/gravar");?>" method="post">
+                     <input type="hidden" value="<?php echo $this->row['CAT_IN_ID']?>" name="CAT_IN_ID" /> 
+                 <div class="col-md-6">    
+                     <div class="form-group">
+                        <fieldset class="fieldset">
+                           <legend>Tipo:</legend>
+                           <label><input type="radio" class="form-control" name="CAT_CH_TIPO" <?php $this->row->CAT_CH_TIPO == "D"?"checked":"" ?> value="D" />Débito</label>
+                           <label><input type="radio" class="form-control" name="CAT_CH_TIPO" <?php $this->row->CAT_CH_TIPO == "C"?"checked":"" ?> value="C" />Crédito</label>
+                        </fieldset>
+                     </div>
+                 </div>
+                 <div class="col-md-6">  
+                     <div class="form-group">
+                        <label>Descrição</label><input type="text" class="form-control" name="CAT_ST_DESCRICAO" value="<?php echo $this->row->CAT_ST_DESCRICAO?>"/>
+                     </div>  
+                     <div class="form-group ">
+                         <label>Cor:</label><input class="form-control input-large" type="color" name="CAT_ST_IDENTIFICADOR" value="<?php echo $this->row['CAT_ST_IDENTIFICADOR'];?>" />
+                     </div>
+                 </div>
+                 <div align="right">   
+                     <button class="btn btn-success" type="submit">Salvar<span class="glyphicon glyphicon-save"></span></button>
+                     <a class="btn btn-warning" href="<?php echo $this->baseUrl("banco/index");?>">Voltar<span class="glyphicon glyphicon-arrow-left"></span></a>
+                 </div>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+   <div class="panel-heading">formulario de Tipos de Conta</div>
+  <form role="form" action="<?php echo $this->baseUrl("tipo-conta/gravar")?>" method="POST">
+   <div class="panel-body">
+          <input class="form-control" name="TIPO_CONTA_IN_ID" type="hidden" value="<?php echo $this->row['TIPO_CONTA_IN_ID']?>" />
+           <div class=""form-group>
+              <label>Descrição</label>
+              <input class="form-control" name="TIPO_CONTA_ST_DESCRICAO" type="text" value="<?php echo $this->row['TIPO_CONTA_ST_DESCRICAO']?>" />
+           </div>
+           
+   </div>
+   <div class="panel-footer">
+     <div class="form-group">
+             <button class="btn btn-success" type="submit">Salvar <span class="glyphicon glyphicon-save"></span></button>
+             <a class="btn btn-primary" href="<?php echo $this->baseUrl("conta/index")?>">Voltar &nbsp;<span class="glyphicon glyphicon-arrow-left"></a>
+           </div>
+   </div>
+   </form>
+</div>

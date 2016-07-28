@@ -1,0 +1,42 @@
+<div class="page-heder"><h2 class="text-center"><?php echo $this->parcela['CAT_ST_DESCRICAO']?></h2></div>
+<form action="<?php echo $this->baseUrl("baixa/gravar")?>" method="POST">
+         <label>Valor da parcela: &nbsp; <?php echo number_format($this->parcela['PAR_DBL_PARCELA'],'2','.',',')?></label>
+      <br/>
+      <input type="hidden" name="BAIXA_IN_ID" value="<?php echo $this->row['BAIXA_IN_ID']?>"/>
+      <input type="hidden" name="PAR_IN_ID" value="<?php echo $this->parcela['PAR_IN_ID']?>"/>
+      <input type="hidden" name="MOV_CH_TIPO" value="<?php echo $this->parcela['MOV_CH_TIPO']?>">
+      
+      <div class="form-group">
+         <label>Valor:</label>
+         <input id="" name="BAIXA_DBL_VALOR" class="form-control" value="<?php echo $this->row['BAIXA_DBL_MULTA']?>"/>
+      </div>
+
+      <div class="form-group">
+          <label>Multa:</label>
+         <input id="" name="BAIXA_DBL_MULTA" class="form-control" value="<?php echo $this->row['BAIXA_DBL_MULTA']?>"/>
+      </div>
+
+      <div class="form-group">
+          <label>Desconto:</label>
+         <input id="" name="BAIXA_DBL_DESCONTO" class="form-control" value="<?php echo $this->row['BAIXA_DBL_DESCONTO']?>"/>
+      </div>
+
+      <div class="form-group">
+          <label>Juros:</label>
+           <div class="input-group">
+             <input id="" name="BAIXA_DBL_JUROS" class="form-control" value="<?php echo $this->row['BAIXA_DBL_JUROS']?>"/>
+          <span class="input-group-addon">%</span>
+     </div>
+      </div>
+      <div class="form-group">
+         <label>Conta:</label>
+          <select id="tipo-conta" name="CON_IN_ID" class="form-control">
+             <?php foreach ($this->aConta as $conta):?>
+                <option value="<?php echo $conta['CON_IN_ID']?>" <?php echo $conta['CON_IN_ID'] == $this->row['CON_IN_ID']?"selected":""?>?><?php echo $conta['CON_ST_DESCRICAO']?></option>
+             <?php endforeach;?>
+          </select>
+      </div>
+      <div class="form-group">
+          <button class="btn btn-success" type="submit">Salvar<span class="glyphicon glyphicon-save"></span></button>
+      </div>
+</form>

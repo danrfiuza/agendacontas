@@ -1,0 +1,46 @@
+<div class="row">
+<div class="col-md-offset-3 col-md-6">
+   <form role="form" action="<?php echo $this->baseUrl("usuario/formulario-trocar-senha")?>">
+     <input type="hidden" value="<?php echo $this->id?>" name="USU_IN_ID" />
+
+       <div class="form-group">
+          <div class="input-group" id="input-group-senha">
+              <label class="control-label">Informe a nova senha:</label>
+              <input id="senha" class="form-control" type="password" name="senha"/>
+          </div>
+       </div>
+       <div class="form-group" id="div-confirma-senha">
+           <div class="input-group" id="input-group">
+              <label class="control-label" for="confirma-senha">Confirme a nova senha:</label>
+              <input id="confirma-senha" class="form-control" type="password" name="confirma-senha" aria-describedby="input-group"/>
+           </div>
+       </div>
+       <div class="form-group">
+          <div class="input-group" id="input-group-senha">
+              <label class="control-label">Confirme a senha antiga:</label>
+              <input class="form-control" type="password" name="USU_ST_SENHA"/>
+          </div>
+       </div>
+       <div class="form-group">
+          <button class="btn btn-primary">Confirmar</button>
+      </div>
+   </form>
+</div>
+</div>
+<script>
+   $(function(){
+     $("#confirma-senha").change(function(){
+        var senha = $("#senha").val();
+        var confirma_senha = $(this).val();
+
+        if(senha == confirma_senha){
+            $("#div-confirma-senha").addClass("form-group has-success has-feedback");
+            $("#div-confirma-senha").find("#input-group").append("<span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>");
+        }else{
+        	$("#div-confirma-senha").addClass("form-group has-error has-feedback");
+            $("#div-confirma-senha").find("#input-group").append("<span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
+            }
+     });
+
+   });
+</script>

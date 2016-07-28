@@ -1,0 +1,100 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+         <div class="panel-heading"><h3 class="text-center">Formulário de Usuário</h3></div>
+         <div class="panel-body">  
+           <form enctype="multipart/form-data" role="form" method="post" action="<?php echo $this->baseUrl("/usuario/gravar")?>">
+              <input class="form-control" type="hidden" name="USU_IN_ID" value="<?php echo $this->row['USU_IN_ID']?>">
+                <div class="col-md-8">
+                   <div class="col-md-12">
+                       <div class="form-group">
+                          <label>Nome:</label>
+                          <input class="form-control" name="USU_ST_NOME" value="<?php echo $this->row['USU_ST_NOME']?>"/>
+                       </div>
+                   </div>
+                   <div class="col-md-8">
+                       <div class="form-group">
+                          <label>E-mail:</label>
+                          <input class="form-control" name="USU_ST_EMAIL" value="<?php echo $this->row['USU_ST_EMAIL']?>"/>
+                       </div>
+                   </div>
+                   <div class="col-md-4">
+                        <div class="form-group">
+                              <label>Nascimento:</label>
+                              <input class="data form-control" type="text" name="USU_DT_NASCIMENTO" value="<?php echo $this->row['USU_DT_NASCIMENTO']?>"/>
+                       </div>
+                   </div>
+                   <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Perfil:</label>
+                            <select name="PERFIL_IN_ID" class="form-control">
+                            <?php foreach ($this->aPerfil as $perfil):?>
+                             <option  value="<?php echo $perfil['PERFIL_IN_ID'];?>" <?php echo $perfil['PERFIL_IN_ID'] == $this->row['PERFIL_IN_ID']?"selected":"";?> > <?php echo $perfil['PERFIL_ST_DESCRICAO']?></option>
+                            <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label>
+                          Ativo
+                          <input class="form-control" type="checkbox" name="USU_CH_ATIVO" value="S" <?php echo $this->row['USU_CH_ATIVO']?"checked":"" ?>/>
+                           </label>
+                       </div>
+                    </div>
+                    <?php if(!$this->row['USU_ST_SENHA']):?>
+                    <div class="col-md-6">
+                       <div class="form-group">
+                          <label>Senha:</label>
+                          <input class="form-control" type="password" name="USU_ST_SENHA" value=" <?php echo $this->row['USU_ST_SENHA']?>"/>
+                       </div>
+                    </div>
+                    <?php else :?>
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="form-group">
+                           <a href="<?php echo $this->baseUrl("usuario/formulario-trocar-senha/USU_IN_ID/").$this->row['USU_IN_ID']?>" id="modal-formulario-trocar-senha" class="btn btn-info" data-toggle="modal" data-target="#myModal" data-remote="false">Trocar Senha &nbsp;<i class="fa fa-key" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <?php endif;?>
+               </div>
+                <div class="col-md-4">
+                     <div class="form-group">
+                          <input type='file' onchange="readURL(this);" name="USU_ST_FOTO"/>
+                          <img id="foto" width="200" height="200" class="img img-thumbnail" src="<?php echo $this->row['USU_ST_FOTO'] ? $this->baseUrl("img/fotos/".$this->row['USU_ST_FOTO']):$this->baseUrl("img/default.jpg")?>" alt="Insira sua Foto" />
+                    </div>
+                </div>
+                <div class="col-md-offset-4 col-md-4">
+                        <div class="form-group">
+                           <button class="btn btn-success">Salvar &nbsp;<span class="glyphicon glyphicon-save"></span></button>
+                           <a href="<?php echo $this->baseUrl("usuario/index")?>" class="btn btn-primary">Voltar &nbsp;<span class="glyphicon glyphicon-arrow-left"></span></a>
+                        </div>
+                </div>
+           </form>
+         </div>
+    </div>
+</div>
+<script>
+//script para mostrar preview da imagem
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#foto')
+                .attr('src', e.target.result)
+                .width(200)
+                .height(200);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$(function(){
+    $(function(){
+  	  $("#myModal").on("show.bs.modal", function(e) {
+  		    var link = $(e.relatedTarget);
+            $(this).find(".modal-title").html("Trocar Senha");
+  		    $(this).find(".modal-body").load(link.attr("href"));
+  		});
+    });
+});
+</script>

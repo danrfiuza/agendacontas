@@ -1,0 +1,42 @@
+<br />
+<div class="panel panel-default">
+     <div class="panel-heading"><h2 align="center">Formulário Agência<h2></div>
+     <div class="panel-body">
+     
+        <form action="<?php echo $this->baseUrl("agencia/gravar");?>" method="post">
+             <input type="hidden" value="<?php echo $this->row['AGE_IN_ID']?>" name="AGE_IN_ID" /> 
+             
+             <div class="col-lg-6">
+             
+                 <div class="form-group">
+                     <label>Agência:</label><input class="form-control" type="text" name="AGE_ST_DESCRICAO" value="<?php echo $this->row['AGE_ST_DESCRICAO'];?>" />
+                 </div> 
+                 
+                 <div class="form-group">
+                    <label>Número da Agência:</label><input class="form-control" type="text" name="AGE_ST_NUMERO" value="<?php echo $this->row['AGE_ST_NUMERO'];?>" />
+                 </div>
+             </div>    
+              
+              <div class="col-lg-6">
+
+                 <div class="form-group">
+                     <label for="BANCO_IN_ID">Banco:</label>
+                     <select name="BANCO_IN_ID" class="form-control">
+                     <?php foreach ($this->banco as $banco):?>
+                        <option value="<?php echo $banco['BANCO_IN_ID']?>"><?php echo $banco['BANCO_ST_DESCRICAO']?> <?php echo $this->row['BANCO_IN_ID'] ==  $banco['BANCO_IN_ID']?"selected":""?></option>
+                     <?php endforeach;?>
+                     </select>
+                 </div>
+                 
+                  <div class="form-group">
+                    <label for="AGE_ST_DESCRICAO">Nome da Agência</label>
+                    <input class="form-control" type="text" name="A" value="<?php echo $this->row['AGE_ST_DESCRICAO'];?>" />  
+                 </div>
+                 <div class="form-group">
+                    <button class="btn btn-success" type="submit">Salvar<span class="glyphicon glyphicon-save"></span></button>
+                    
+                 </div>
+             </div>
+        </form>
+    </div>
+</div> 

@@ -1,0 +1,54 @@
+<div class="page-header"><h1>Agenda de Contas de Daniel Fiuza</h1></div>
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+       <div class="panel-heading">A Pagar</div>
+       <div class="panel-body">
+        <ul class="list-group">
+          <?php foreach ($this->aParcelamentoDebito as $debito):?>
+               <a data-toggle="modal" data-target="#myModal" data-remote="false" href="<?php echo $this->baseUrl("baixa/formulario/PAR_IN_ID/").$debito['PAR_IN_ID']?>">
+               <li class="list-group-item">
+                  <?php echo implode("/",array_reverse(explode("-",$this->escape($debito->PAR_DT_VENCIMENTO))));?>&nbsp;
+                  <?php echo $this->escape($debito->PAR_IN_PARCELA);?>º Parcela&nbsp;
+                  <?php echo $this->escape($debito->CAT_ST_DESCRICAO);?>&nbsp;
+                   <?php echo number_format($debito['PAR_DBL_PARCELA'],'2',',','.')?>&nbsp;
+                  
+               </li>
+               </a>
+          <?php endforeach;?>
+          </ul>
+       </div>
+       <div class="panel-footer">
+       </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+       <div class="panel-heading">A Receber</div>
+       <div class="panel-body">
+        <ul class="list-group">
+          <?php foreach ($this->aParcelamentoCredito as $credito):?>
+              <a data-toggle="modal" data-target="#myModal" data-remote="false" href="<?php echo $this->baseUrl("baixa/formulario/PAR_IN_ID/").$debito['PAR_IN_ID'];?>">
+               <li class="list-group-item">
+                  <?php echo implode("/",array_reverse(explode("-",$this->escape($credito->PAR_DT_VENCIMENTO))));?>&nbsp;
+                  <?php echo $this->escape($credito->PAR_IN_PARCELA);?>º Parcela&nbsp;
+                  <?php echo $this->escape($credito->CAT_ST_DESCRICAO);?>&nbsp;
+                  <?php echo number_format($credito['PAR_DBL_PARCELA'],'2',',','.')?>&nbsp;
+               </li>
+              </a>
+          <?php endforeach;?>
+          </ul>
+       </div>
+       <div class="panel-footer">
+       </div>
+    </div>
+</div>
+<script>
+$(function(){
+  $("#myModal").on("show.bs.modal", function(e) {
+     var link = $(e.relatedTarget);
+     $(this).find(".modal-body").load(link.attr("href"));
+   });
+});
+</script>

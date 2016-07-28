@@ -1,0 +1,5 @@
+<select name="CAT_IN_ID" class="form-control">
+  <?php foreach ($this->aCategoria as $categoria):?>
+   <option value="<?php echo $categoria['CAT_IN_ID']?>" style="background-color:<?php echo $categoria['CAT_ST_IDENTIFICADOR']?>;"><?php echo $categoria['CAT_ST_DESCRICAO']?></option>
+   <?php endforeach;?>
+</select>
